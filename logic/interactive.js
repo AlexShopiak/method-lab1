@@ -8,7 +8,12 @@ const isRealNum = num => {
   return isNumber && isNotNaN;
 }
 
-const readFromConsole = values => {
+const readFromConsole = () => {
+  let values = {
+    a: null,
+    b: null,
+    c: null,
+  }
   for (value in values) {
     const num = prompt(`${whtClr}${value} = ${grnClr}`);
     if (isRealNum(Number(num))) {
@@ -19,7 +24,6 @@ const readFromConsole = values => {
       break;
     }
   }
-
   if (values.a == 0) {
     console.log(`${whtClr}Error. 'a' cannot be 0`)
     readFromConsole(values);
