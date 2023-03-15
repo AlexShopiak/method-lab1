@@ -24,4 +24,4 @@
  - <code><a href="https://github.com/AlexShopiak/method-lab1/commit/71bfccee3a8c158236ff5923d5d756934c522e66">Revert commit</a></code>
 
 ### Алгоритм роботи програми
-![3 drawio](https://user-images.githubusercontent.com/90408822/225340454-088fc25c-f5a1-45bc-adbc-0a12c9b5a2c3.png)
+<img width="522" alt="3 drawio" src="https://user-images.githubusercontent.com/90408822/225413545-d977ec83-6102-4da3-87b6-d983425e13c5.png">
