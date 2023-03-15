@@ -9,6 +9,23 @@ const isRealNum = num => {
 }
 
 const startAskLoop = values => {
+  for (value in values) {
+    const num = prompt(`${whtClr}${value} = ${grnClr}`);
+    if (isRealNum(num * 1)) {
+      values[value] = num * 1;
+    } else {
+      console.log(`${whtClr}Error. Expected a valid real number, got ${num} instead`)
+      startAskLoop(values);
+      break;
+    }
+  }
+
+  if (values.a == 0) {
+    console.log(`${whtClr}Error. 'a' cannot be 0`)
+    startAskLoop(values);
+  }
+
+  console.log(whtClr); //set default color
   return values;
 }
 
