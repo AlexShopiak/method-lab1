@@ -8,25 +8,25 @@ const isRealNum = num => {
   return isNumber && isNotNaN;
 }
 
-const startAskLoop = values => {
+const readFromConsole = values => {
   for (value in values) {
     const num = prompt(`${whtClr}${value} = ${grnClr}`);
     if (isRealNum(Number(num))) {
       values[value] = Number(num);
     } else {
       console.log(`${whtClr}Error. Expected a valid real number, got ${num} instead`)
-      startAskLoop(values);
+      readFromConsole(values);
       break;
     }
   }
 
   if (values.a == 0) {
     console.log(`${whtClr}Error. 'a' cannot be 0`)
-    startAskLoop(values);
+    readFromConsole(values);
   }
 
   process.stdout.write(whtClr);
   return values;
 }
 
-module.exports = {startAskLoop}
+module.exports = {readFromConsole}
