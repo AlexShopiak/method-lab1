@@ -22,4 +22,4 @@ else {
 }
 
 console.log(getExprStr(values));
-console.log(getRootsWithPrecision(values, 2));
+console.log(getRootsWithPrecision(values, 1));
