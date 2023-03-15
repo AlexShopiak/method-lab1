@@ -7,7 +7,7 @@ const hasRightFormat = text => {
   return mask.test(text);
 }
 
-const getFromFile = path => {
+const getFromFile = (path, values) => {
 
   if (!isFileExist(path)) {
     console.log(`Error. File ${path} does not exist`);
@@ -19,12 +19,14 @@ const getFromFile = path => {
   if(hasRightFormat(str)) {
     const arr = str.split('\r\n')[0].split(' ');
     const [aValue, bValue, cValue] = [arr[0],arr[1],arr[2]];
-
     if (aValue == 0) {
       console.log('Error. a cannot be 0');
       process.exit(1);
     }
-    return {a:aValue, b:bValue, c:cValue};
+    values.a = aValue;
+    values.b = bValue;
+    values.c = cValue;
+    return values;
   } 
   else {
     console.log('Error. Invalid file format:', [str]);
