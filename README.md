@@ -14,5 +14,11 @@
 - або
 - node index.js file.txt
 
+### Вимоги до текстового файлу для неінтерактивного режиму
+Формат файлу мусить відповідати масці типу A\sB\sC\n де
+- A B C : дійсні числа, коефіцієнти рівняння (У якості десяткового символу очікується крапка)
+- \s : пробіл
+- \n : перехід на новий рядок
+
 ### Revert commit
  - <code><a href="https://github.com/AlexShopiak/method-lab1/commit/71bfccee3a8c158236ff5923d5d756934c522e66">Revert commit</a></code>
