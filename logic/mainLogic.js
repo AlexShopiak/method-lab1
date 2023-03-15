@@ -1,8 +1,21 @@
 const evalDisc = (a, b, c) => b * b - 4 * a * c;
 
+const objHasProperties = (obj, arr) => {
+  for (property of arr) {
+    if (!obj.hasOwnProperty(property)) return false;
+  }
+  return true;
+}
+
 const getExprStr = values => {
+  const properties = ['a', 'b', 'c'];
   const [a, b, c] = [values.a, values.b, values.c];
-  return `Equation is: (${a}) x^2 + (${b}) x + (${c}) = 0`;
+
+  if (objHasProperties(values, properties)) {
+    return `Equation is: (${a}) x^2 + (${b}) x + (${c}) = 0`;
+  }
+  console.log(`Error. Object doesn't have all ${properties} properties`);
+  process.exit(1);
 }
 
 const getRootsWithPrecision = (values, precision) => {
