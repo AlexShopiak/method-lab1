@@ -2,34 +2,28 @@ const {existsSync, readFileSync}  = require('fs');
 
 const isFileExist = path => existsSync(path);
 
-const hasRightFormat = text => {
-  const mask = /^(-?\d+)(\.\d+)? (-?\d+)(\.\d+)? (-?\d+)(\.\d+)?\r\n$/g;  
-  return mask.test(text);
-}
+const hasRightFormat = (text, mask) => mask.test(text);
 
-const getFromFile = path => {
-
+const readFromFile = path => {
   if (!isFileExist(path)) {
     console.log(`Error. File ${path} does not exist`);
     process.exit(1);
   }
-
-  const str = readFileSync(path, 'utf-8');
-  
-  if(hasRightFormat(str)) {
-    const arr = str.split('\r\n')[0].split(' ');
-    const [aValue, bValue, cValue] = [arr[0],arr[1],arr[2]];
-
-    if (aValue == 0) {
+  const dataString = readFileSync(path, 'utf-8');
+  const mask = /^(-?\d+)(\.\d+)? (-?\d+)(\.\d+)? (-?\d+)(\.\d+)?\r\n$/g;
+  if(hasRightFormat(dataString, mask)) {
+    const coeffs = dataString.split('\r\n')[0].split(' ');
+    const [aCoeff, bCoeff, cCoeff] = [coeffs[0], coeffs[1], coeffs[2]];
+    if (aCoeff == 0) {
       console.log('Error. a cannot be 0');
       process.exit(1);
     }
-    return {a:aValue, b:bValue, c:cValue};
+    return {a:aCoeff, b:bCoeff, c:cCoeff};
   } 
   else {
-    console.log('Error. Invalid file format:', [str]);
+    console.log('Error. Invalid file format:', [dataString]);
     process.exit(1);
   }
 }
 
-module.exports = {getFromFile}
+module.exports = {readFromFile}

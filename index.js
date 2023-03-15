@@ -1,8 +1,10 @@
 const {startAskLoop} = require('./logic/interactive.js');
-const {getFromFile} = require('./logic/noninteractive.js');
+const {readFromFile} = require('./logic/noninteractive.js');
 const {getExprStr, getRootsWithPrecision} = require('./logic/mainLogic.js');
-const args = process.argv;
-const argsLen = args.length;
+
+const argsOfCall = process.argv;
+const filePath = argsOfCall[2];
+const precision = 1; //digits after point
 
 let values = {
   a: null,
@@ -10,10 +12,10 @@ let values = {
   c: null,
 }
 
-if (argsLen == 3) {
-  values = getFromFile(args[2]);
+if (argsOfCall.length == 3) {
+  values = readFromFile(filePath);
 } 
-else if (argsLen == 2){
+else if (argsOfCall.length == 2){
   values = startAskLoop(values);
 } 
 else {
@@ -21,5 +23,8 @@ else {
   process.exit(1);
 }
 
-console.log(getExprStr(values));
-console.log(getRootsWithPrecision(values, 1));
+const str = getExprStr(values);
+const roots = getRootsWithPrecision(values, precision);
+
+console.log(str);
+console.log(roots);

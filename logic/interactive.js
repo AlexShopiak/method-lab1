@@ -3,16 +3,16 @@ const whtClr = "\x1b[97m";
 const grnClr = "\x1b[92m";
 
 const isRealNum = num => {
-  const c1 = (typeof(num) === 'number');
-  const c2 = !isNaN(num);
-  return c1 && c2;
+  const isNumber = (typeof(num) === 'number');
+  const isNotNaN = !isNaN(num);
+  return isNumber && isNotNaN;
 }
 
 const startAskLoop = values => {
   for (value in values) {
     const num = prompt(`${whtClr}${value} = ${grnClr}`);
-    if (isRealNum(num * 1)) {
-      values[value] = num * 1;
+    if (isRealNum(Number(num))) {
+      values[value] = Number(num);
     } else {
       console.log(`${whtClr}Error. Expected a valid real number, got ${num} instead`)
       startAskLoop(values);
@@ -25,7 +25,7 @@ const startAskLoop = values => {
     startAskLoop(values);
   }
 
-  console.log(whtClr); //set default color
+  process.stdout.write(whtClr);
   return values;
 }
 
