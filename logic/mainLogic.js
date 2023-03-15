@@ -1,5 +1,10 @@
 const evalDisc = (a, b, c) => b * b - 4 * a * c;
 
+const getExprStr = values => {
+  const [a, b, c] = [values.a, values.b, values.c];
+  return `Equation is: (${a}) x^2 + (${b}) x + (${c}) = 0`;
+}
+
 const getRootsWithPrecision = (values, precision) => {
   const [a, b, c] = [values.a, values.b, values.c];
   const disc = evalDisc(a, b, c);
@@ -14,4 +19,4 @@ const getRootsWithPrecision = (values, precision) => {
   return "There are 0 roots";
 }
 
-module.exports = { getRootsWithPrecision }
+module.exports = { getExprStr, getRootsWithPrecision }
