@@ -1,3 +1,4 @@
+## TEST BRANCH. NOT FOR Methodologies LABS
 ## Quadratic Equation Solver - консольний застосунок, що обраховує корені квадратного рівняння.
 
 ### Застосунок працює у 2 режимах:
